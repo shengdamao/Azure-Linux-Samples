@@ -1,0 +1,98 @@
+{% extends 'layout.html'%}
+{% block title %}
+<h2>訂單管理</h2>
+{% endblock title%}
+
+{% block content %}
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-1-tab" data-toggle="tab" href="#nav-1" role="tab" aria-controls="nav-1" aria-selected="true">等待派發</a>
+        <a class="nav-item nav-link" id="nav-2-tab" data-toggle="tab" href="#nav-2" role="tab" aria-controls="nav-2" aria-selected="false">派發完成</a>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active pt-3" id="nav-1" role="tabpanel" aria-labelledby="nav-1-tab">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>商品名稱</th>
+                    <th>顯示圖</th>
+                    <th>兌換點數</th>
+                    <th>名額</th>
+                    <th>時間</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>全家小熱美</td>
+                    <td><img src="./static/assets/images/pre_1.jpg" class="img-fluid border" style="max-width:60px" alt=""></td>
+                    <td>100</td>
+                    <td>15</td>
+                    <td>
+                        <p class="m-0"><small>上架時間：2020/03/06</small></p>
+                        <p class="m-0"><small>截止時間：2020/03/11</small></p>
+                        <p class="m-0"><small>派發時間：2020/03/16</small></p>
+                    </td>
+                    <td>
+                        <a href="order_info" class="btn btn-primary btn-sm">詳情</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade pt-3" id="nav-2" role="tabpanel" aria-labelledby="nav-2-tab">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>商品名稱</th>
+                    <th>顯示圖</th>
+                    <th>兌換點數</th>
+                    <th>名額</th>
+                    <th>時間</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>全家小熱美</td>
+                    <td><img src="./static/assets/images/gift-4.png" class="img-fluid border" style="max-width:60px" alt=""></td>
+                    <td>100</td>
+                    <td>15</td>
+                    <td>
+                        <p class="m-0"><small>上架時間：2020/03/06</small></p>
+                        <p class="m-0"><small>截止時間：2020/03/11</small></p>
+                        <p class="m-0"><small>派發時間：2020/03/16</small></p>
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-primary btn-sm">詳情</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("body").on("click", "#save", function () {
+            $("form").submit();
+        })
+
+        $(".msg_type_box").hide();
+        $(".text_box").show();
+
+        $("body").on("change", "#msg_type", function () {
+            $(".msg_type_box").hide();
+            $("." + $(this).val() + "_box").show();
+        })
+
+        $("body").on("click", ".user-info", function () {
+            user_id = $(this).attr("user_id");
+            location.href = "./user_info/{{session.get('channel_id')}}/"+user_id
+        })
+
+    })
+</script>
+{# 燈箱組建結束#}
+{% endblock content %}

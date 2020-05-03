@@ -1,0 +1,207 @@
+{% extends 'layout.html'%}
+{% block title %}
+<h2>商品管理</h2>
+<a href="" class="btn btn-primary" data-toggle="modal" data-target="#productModal">
+    <i class="material-icons">add</i>
+    新增
+</a>
+{% endblock title%}
+
+{% block content %}
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-1-tab" data-toggle="tab" href="#nav-1" role="tab" aria-controls="nav-1" aria-selected="true">上架中</a>
+        <a class="nav-item nav-link" id="nav-2-tab" data-toggle="tab" href="#nav-2" role="tab" aria-controls="nav-2" aria-selected="false">已截止</a>
+        <a class="nav-item nav-link" id="nav-3-tab" data-toggle="tab" href="#nav-3" role="tab" aria-controls="nav-3" aria-selected="false">已過派發時間</a>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active pt-3" id="nav-1" role="tabpanel" aria-labelledby="nav-1-tab">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>商品名稱</th>
+                    <th>顯示圖</th>
+                    <th>兌換點數</th>
+                    <th>名額</th>
+                    <th>時間</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>全家小熱美</td>
+                    <td><img src="./static/assets/images/pre_1.jpg" class="img-fluid border" style="max-width:60px" alt=""></td>
+                    <td>100</td>
+                    <td>15</td>
+                    <td>
+                        <p class="m-0"><small>上架時間：2020/03/06</small></p>
+                        <p class="m-0"><small>截止時間：2020/03/11</small></p>
+                        <p class="m-0"><small>派發時間：2020/03/16</small></p>
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#productModal">編輯</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade pt-3" id="nav-2" role="tabpanel" aria-labelledby="nav-2-tab">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>商品名稱</th>
+                    <th>顯示圖</th>
+                    <th>兌換點數</th>
+                    <th>名額</th>
+                    <th>時間</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>全家小熱美</td>
+                    <td><img src="./static/assets/images/gift-4.png" class="img-fluid border" style="max-width:60px" alt=""></td>
+                    <td>100</td>
+                    <td>15</td>
+                    <td>
+                        <p class="m-0"><small>上架時間：2020/03/06</small></p>
+                        <p class="m-0"><small>截止時間：2020/03/11</small></p>
+                        <p class="m-0"><small>派發時間：2020/03/16</small></p>
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#productModal">編輯</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade pt-3" id="nav-3" role="tabpanel" aria-labelledby="nav-3-tab">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>商品名稱</th>
+                    <th>顯示圖</th>
+                    <th>兌換點數</th>
+                    <th>名額</th>
+                    <th>時間</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>全家小熱美</td>
+                    <td><img src="./static/assets/images/pre_1.jpg" class="img-fluid border" style="max-width:60px" alt=""></td>
+                    <td>100</td>
+                    <td>15</td>
+                    <td>
+                        <p class="m-0"><small>上架時間：2020/03/06</small></p>
+                        <p class="m-0"><small>截止時間：2020/03/11</small></p>
+                        <p class="m-0"><small>派發時間：2020/03/16</small></p>
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#productModal">編輯</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{# 燈箱組件 #}
+<!-- Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productModalLabel">新增、編輯商品</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="post">
+                <div class="modal-body">
+                    <div class="tool-list-width">
+
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">Channel ID<span
+                                    class="text-danger">*</span></label>
+                            <div class="col-10"> <input type="text" name="channel_id" class="form-control"
+                                    placeholder="請輸入" required value="{{ session.get('channel_id')}}" readonly></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">商品名稱<span class="text-danger">*</span></label>
+                            <div class="col-10">
+                                <input type="text" name="product_name" class="form-control" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">兌換點數<span class="text-danger">*</span></label>
+                            <div class="col-4">
+                                <input type="number" name="redeem" class="form-control"
+                                    placeholder="請輸入" required>
+                            </div>
+                            <label class="col-2 col-form-label" for="">名額<span class="text-danger">*</span></label>
+                            <div class="col-4">
+                                <input type="number" name="quota" class="form-control"
+                                    placeholder="請輸入" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">上架時間<span class="text-danger">*</span></label>
+                            <div class="col-10">
+                                <input type="datetime-local" name="date_sale" class="form-control" value="2018-06-12T19:30" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">截止時間<span class="text-danger">*</span></label>
+                            <div class="col-10">
+                                <input type="datetime-local" name="date_close" class="form-control" value="2018-06-12T19:30" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">派發時間<span class="text-danger">*</span></label>
+                            <div class="col-10">
+                                <input type="datetime-local" name="date_send" value="2018-06-12T19:30" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">商品圖片<span class="text-danger">*</span></label>
+                            <div class="col-10">
+                                <input type="file" name="product_img" class="form-control"  required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="save">新增</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("body").on("click", "#save", function () {
+            $("form").submit();
+        })
+
+        $(".msg_type_box").hide();
+        $(".text_box").show();
+
+        $("body").on("change", "#msg_type", function () {
+            $(".msg_type_box").hide();
+            $("." + $(this).val() + "_box").show();
+        })
+
+        $("body").on("click", ".user-info", function () {
+            user_id = $(this).attr("user_id");
+            location.href = "./user_info/{{session.get('channel_id')}}/"+user_id
+        })
+
+    })
+</script>
+{# 燈箱組建結束#}
+{% endblock content %}

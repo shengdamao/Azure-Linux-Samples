@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <base href="/">
+    <title>Userflow</title>
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Noto+Sans+TC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./static/assets/css/layout.css">
+    <script src="./static/assets/js/jquery-3.4.1.min.js"></script>
+    <script src="./static/assets/js/popper.min.js"></script>
+    <script src="./static/assets/js/bootstrap.min.js"></script>
+    <script src="./static/assets/js/echarts.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" id="foxconn_nav">
+        <a class="navbar-brand h1logo" href="#">Userflow</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mr-auto">
+                <!-- <li><h3 class="m-0">Farm Diary</h3></li> -->
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="想執行某個功能" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div class="wrapper">
+        <div class="row no-gutters">
+            <div class="col fox-sidebar">
+                <ul id="fox-sidebar-ul">
+                    <li><a href="./channel" class="active">Channel</a></li>
+                    <li><a href="./msg" >群發訊息</a></li>
+                    <li><a href="./scripts">腳本</a></li>
+                    <li><a href="./re_url">轉址器</a></li>
+                    <li><a href="./users">會員</a></li>
+                    <li><a href="./tags">標籤</a></li>
+                    <li><a href="./products">商品管理</a></li>
+                    <li><a href="./orders">訂單管理</a></li>
+                    <!-- <li><a href="tool-list.html">元件：列表、元件</a></li>
+                    <li><a href="tool-login.html">登入頁面</a></li>
+                    <li><a href="batch.html">批次管理</a></li> -->
+                </ul>
+            </div>
+            <div class="col fox-content p-5">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    {% block title %}{% endblock title %}
+                </div>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    {% for category,message in messages %}
+                        <div class="alert alert-{{ category }}" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <hr>
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    
+</body>
+
+</html>

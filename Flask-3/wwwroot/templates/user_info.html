@@ -1,0 +1,62 @@
+{% extends 'layout.html'%}
+{% block title %}
+<h2>會員內容</h2>
+
+{% endblock title%}
+
+{% block content %}
+
+
+<div class="card mb-4">
+    <div class="row p-3">
+        <div class="col-1"><img class="img-fluid rounded" src="{{ user_info.avator }}" alt=""></div>
+        <div class="col-11">
+            <h3>{{ user_info.name }}</h3>
+            <hr>
+            <div class="row">
+                <div class="col-6">
+                    <p class="mb-2">將用戶設定為：</p>
+                    <div class="bg-light p-2 mb-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <label class="form-check-label" for="inlineCheckbox1">黑名單</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                            <label class="form-check-label" for="inlineCheckbox2">追蹤</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <p class="mb-2">用戶tags</p>
+                    <div class="bg-light p-2">
+                        <span class="badge badge-pill badge-outline-secondary">2019新光登高賽</span>
+                        <span class="badge badge-pill badge-outline-secondary">2020Q1</span>
+                        <span class="badge badge-pill badge-outline-secondary">閱讀超過10篇</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<table class="table table-hover ins-table-1">
+    <thead>
+        <tr>
+            <th>最後互動時間</th>
+            <th>行為</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in user_logs %}
+        <tr>
+            <td>{{data.datetime}}</td>
+            <td>{{data.log_note}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock content %}

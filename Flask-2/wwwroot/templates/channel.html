@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block title %} 
+<h2>Channel </h2>
+<a href="" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <i class="material-icons">add</i>
+    新增
+</a>
+{% endblock title %}
+
+{% block content %}
+<div class="row">
+
+    {% for data in datalist %}
+    <div class="col-3">
+        <div class="channel-item text-center">
+            <h3 class="text-center mt-3 mb-3">{{ data.channel_name }}</h3>  
+            <button class="btn btn-outline-primary btn-sm set_use mb-3" channel_id="{{ data.channel_id }}">管理</button>
+        </div>
+    </div>
+    {% endfor %}
+    
+</div>
+
+{# 燈箱組件 #}
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">新增 Channel </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="post">
+                <div class="modal-body">
+                    <div class="tool-list-width">
+                        
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label" for="">Channel ID<span class="text-danger">*</span></label>
+                                <div class="col-10"> <input type="text" name="channel_id" class="form-control" placeholder="請輸入" required></div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label" for="">Channel Name<span class="text-danger">*</span></label>
+                                <div class="col-10"> <input type="text" name="channel_name" class="form-control" placeholder="請輸入" required></div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label" for="">Channl Secret<span class="text-danger">*</span></label>
+                                <div class="col-10"> <input type="text" name="channel_secret" class="form-control" placeholder="請輸入" required></div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label" for="">Channl Access Token<span class="text-danger">*</span></label>
+                                <div class="col-10"> <input type="text" name="channel_access_token" class="form-control" placeholder="請輸入" required></div>
+                            </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="save">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        $("body").on("click","#save",function(){
+            $("form").submit();
+        })
+        $("body").on("click",".set_use",function(){
+            // alert($(this).attr("channel_id"));
+            $.getJSON("./api_sys/set_channel/"+ $(this).attr("channel_id"),function(data){
+                // alert("Success:"+ data.channel_id);
+                // alert("請開始進行操作")
+                location.href = './channel_info'
+            })
+        })
+    })
+</script>
+{# 燈箱組建結束#}
+
+{% endblock content %}

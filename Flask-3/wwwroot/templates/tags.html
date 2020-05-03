@@ -1,0 +1,84 @@
+{% extends 'layout.html'%}
+{% block title %}
+<h2>Tags</h2>
+
+{% endblock title%}
+
+{% block content %}
+<h3>
+    取得<span class="badge badge-pill badge-outline-primary ml-1 mr-1">2019新光登高賽</span>Tag的會員人數趨勢：
+</h3>
+<div class="text-right mb-3">
+    <form>
+        <div class="form-check form-check-inline">
+            <input type="date" class="form-control" value="2020-01-25">
+        </div>
+        <div class="form-check form-check-inline">
+            至
+        </div>
+        <div class="form-check form-check-inline mr-0">
+            <input type="date" class="form-control" value="2020-02-25">
+        </div>
+    </form>
+</div>
+<div class="card mb-5">
+    <div class="chart_area" id="chart_1" style="width: 100%;height:400px;"></div>
+</div>
+<div class="tagArea">
+    <div class="row mb-3">
+        <div class="col-6">
+            <h3>Tags列表</h3>
+        </div>
+        <div class="col-6">
+            <form class="form-inline my-2 my-lg-0 float-right">
+                <input class="form-control mr-sm-2 form-control-md" type="search" placeholder="搜尋tag"
+                    aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0 btn-md" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="taglist row">
+        <div class="col-2 text-center mb-2"><a href="" class="card text-secondary">2019新光登高賽</a></div>
+        <div class="col-2 text-center mb-2"><a href="" class="card text-secondary">2020Q1</a></div>
+        <div class="col-2 text-center mb-2"><a href="" class="card text-secondary">2020Q2</a></div>
+        <div class="col-2 text-center mb-2"><a href="" class="card text-secondary">2020Q3</a></div>
+        <div class="col-2 text-center mb-2"><a href="" class="card text-secondary">2020Q4</a></div>
+        <div class="col-2 text-center mb-2"><a href="" class="card text-secondary">旅平險用戶</a></div>
+        <div class="col-2 text-center mb-2"><a href="" class="card text-secondary">機車族</a></div>
+        <div class="col-2 text-center mb-2"><a href="" class="card text-secondary">長照險用戶</a></div>
+    </div>
+</div>
+
+
+
+<script>
+    $(function () {
+        var chart_1 = echarts.init(document.getElementById('chart_1'));
+        $("body").on("click", ".openSecond", function () {
+            $(this).parents(".first").next(".second").toggleClass("d-none")
+        })
+        var option1 = {
+            xAxis: {
+                type: 'category',
+                data: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [32, 342, 820, 901, 1330, 1934, 2290, 2320],
+                type: 'line',
+                lineStyle: {
+                    color: '#00b900',
+                },
+                itemStyle: {
+                    color: '#00b900',
+                    borderWidth: 5
+                },
+            }],
+        };
+
+        chart_1.setOption(option1);
+    })
+</script>
+{% endblock content %}

@@ -1,0 +1,195 @@
+{% extends 'layout.html'%}
+{% block title %}
+<h2><button type="buttom" onclick="history.back()" class="btn-outline-secondary btn-sm mr-2">
+    <i class="material-icons">keyboard_arrow_left</i></button>派發序號</h2>
+{% endblock title%}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="row p-3">
+        <div class="col-1"><img class="img-fluid rounded" src="./static/assets/images/pre_1.jpg" alt=""></div>
+        <div class="col-11">
+            <h3>全家小熱美</h3>
+            <hr>
+            <table>
+                <tr>
+                    <td>兌換點數</td>
+                    <td><span class="text-danger">100</span>點</td>
+                </tr>
+                <tr>
+                    <td>庫存</td>
+                    <td><span class="text-danger">15</span>杯</td>
+                </tr>
+                <tr>
+                    <td>時間</td>
+                    <td>
+                        <p class="m-0"><small>上架時間：2020/03/06</small></p>
+                        <p class="m-0"><small>截止時間：2020/03/11</small></p>
+                        <p class="m-0"><small>派發時間：2020/03/16</small></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<h3>兌換者列表</h3>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>兌換者</th>
+            <th>進行派發</th>
+            <th>對使用者進行</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>
+                Effy Tsiu<br/>
+                <!-- user id -->
+                <small class="text-gray">eser1321245432</small>
+            </td>
+            <td>
+                <input type="text" class="form-control mb-2" placeholder="網址">
+                <input type="text" class="form-control mb-1" placeholder="密碼">
+                <button class="btn btn-sm btn-primary">派發</button>
+            </td>
+            <td>
+                <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#msgModal">傳訊</button>
+                <button class="btn btn-sm btn-outline-secondary"  data-toggle="modal" data-target="#blockModal">黑名單</button>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>
+                James Wolf<br/>
+                <!-- user id -->
+                <small class="text-gray">eser1321245432</small>
+            </td>
+            <td>
+                <input type="text" class="form-control mb-2" placeholder="網址">
+                <input type="text" class="form-control mb-1" placeholder="密碼">
+                <button class="btn btn-sm btn-primary">派發</button>
+            </td>
+            <td>
+                <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#msgModal">傳訊</button>
+                <button class="btn btn-sm btn-outline-secondary"  data-toggle="modal" data-target="#blockModal">黑名單</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+{# 燈箱組件 #}
+<!-- Modal -->
+<div class="modal fade" id="blockModal" tabindex="-1" role="dialog" aria-labelledby="blockModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="blockModalLabel">設定成黑名單</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="post" id="form_block">
+                <div class="modal-body">
+                    <div class="tool-list-width">
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">Channel ID<span
+                                    class="text-danger">*</span></label>
+                            <div class="col-10"> <input type="text" name="channel_id" class="form-control"
+                                    placeholder="請輸入" required value="{{ session.get('channel_id')}}" readonly></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">名稱<span
+                                    class="text-danger">*</span></label>
+                            <div class="col-4"> <input type="text" name="name" class="form-control" required value="James Wolf" readonly></div>
+                            <label class="col-2 col-form-label" for="">ＵＩＤ<span
+                                    class="text-danger">*</span></label>
+                            <div class="col-4"> <input type="text" name="uid" class="form-control"
+                                    placeholder="請輸入" required value="dsfsdfffewerwe" readonly></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">訊息內容(選填)</label>
+                            <div class="col-10">
+                                <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="save">設成黑名單</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="msgModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="msgModalLabel">傳訊</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="post" id="form_msg">
+                <div class="modal-body">
+                    <div class="tool-list-width">
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">Channel ID<span
+                                    class="text-danger">*</span></label>
+                            <div class="col-10"> <input type="text" name="channel_id" class="form-control"
+                                    placeholder="請輸入" required value="{{ session.get('channel_id')}}" readonly></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">名稱<span
+                                    class="text-danger">*</span></label>
+                            <div class="col-4"> <input type="text" name="name" class="form-control" required value="James Wolf" readonly></div>
+                            <label class="col-2 col-form-label" for="">ＵＩＤ<span
+                                    class="text-danger">*</span></label>
+                            <div class="col-4"> <input type="text" name="uid" class="form-control"
+                                    placeholder="請輸入" required value="dsfsdfffewerwe" readonly></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">訊息內容(選填)</label>
+                            <div class="col-10">
+                                <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="save_msg">傳訊</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("body").on("click", "#save", function () {
+            $("form").submit();
+        })
+
+        $(".msg_type_box").hide();
+        $(".text_box").show();
+
+        $("body").on("change", "#msg_type", function () {
+            $(".msg_type_box").hide();
+            $("." + $(this).val() + "_box").show();
+        })
+
+        $("body").on("click", ".user-info", function () {
+            user_id = $(this).attr("user_id");
+            location.href = "./user_info/{{session.get('channel_id')}}/"+user_id
+        })
+
+    })
+</script>
+{# 燈箱組建結束#}
+{% endblock content %}

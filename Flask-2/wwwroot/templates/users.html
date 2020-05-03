@@ -1,0 +1,157 @@
+{% extends 'layout.html'%}
+{% block title %}
+<h2>會員列表</h2>
+<a href="" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <i class="material-icons">add</i>
+    新增
+</a>
+{% endblock title%}
+
+{% block content %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>暱稱</th>
+            <th>最後互動時間</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in datalist %}
+        <tr>
+            <td>{{data.name}}</td>
+            <td>{{data.last_datetime}}</td>
+            <td>
+                <button class="btn btn-primary btn-sm user-info" user_id="{{ data.user_id }}">查看</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{# 燈箱組件 #}
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">新增訊息 </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="post">
+                <div class="modal-body">
+                    <div class="tool-list-width">
+
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">Channel ID<span
+                                    class="text-danger">*</span></label>
+                            <div class="col-10"> <input type="text" name="channel_id" class="form-control"
+                                    placeholder="請輸入" required value="{{ session.get('channel_id')}}" readonly></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">必要包含標籤<span class="text-danger"></span></label>
+                            <div class="col-10">
+                                <input type="text" name="need_tags" class="form-control" placeholder="如果沒有填寫就是不篩選成員">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">標題<span class="text-danger">*</span></label>
+                            <div class="col-10"> <input type="text" name="subject" class="form-control"
+                                    placeholder="請輸入" required></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label" for="">訊息種類<span class="text-danger">*</span></label>
+                            <div class="col-10">
+                                <div class="form-group">
+                                    <select class="form-control" name="type" id="msg_type">
+                                        <option value="text">純文字</option>
+                                        <option value="image">純圖片</option>
+                                        <option value="imagemap">影像地圖</option>
+                                        <option value="flex">flex</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="msg_type_box text_box">
+
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label" for="">內文<span class="text-danger">*</span></label>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="desc"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="msg_type_box image_box">
+
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label" for="">圖片路徑<span
+                                        class="text-danger">*</span></label>
+                                <div class="col-10"> <input type="text" name="desc"" class=" form-control"
+                                        placeholder="請輸入" required></div>
+                            </div>
+                        </div>
+
+                        <div class="msg_type_box imagemap_box">
+
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label" for="">圖片路徑<span
+                                        class="text-danger">*</span></label>
+                                <div class="col-10"> <input type="text" name="desc"" class=" form-control"
+                                        placeholder="請輸入" required></div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label" for="">目標路徑<span
+                                        class="text-danger">*</span></label>
+                                <div class="col-10"> <input type="text" name="desc"" class=" form-control"
+                                        placeholder="請輸入" required></div>
+                            </div>
+                        </div>
+
+                        <div class="msg_type_box flex_box">
+
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label" for="">flex json<span
+                                        class="text-danger">*</span></label>
+                                <div class="col-10"> <input type="text" name="desc"" class=" form-control"
+                                        placeholder="請輸入" required></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="save">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("body").on("click", "#save", function () {
+            $("form").submit();
+        })
+
+        $(".msg_type_box").hide();
+        $(".text_box").show();
+
+        $("body").on("change", "#msg_type", function () {
+            $(".msg_type_box").hide();
+            $("." + $(this).val() + "_box").show();
+        })
+
+        $("body").on("click", ".user-info", function () {
+            user_id = $(this).attr("user_id");
+            location.href = "./user_info/{{session.get('channel_id')}}/"+user_id
+        })
+
+    })
+</script>
+{# 燈箱組建結束#}
+{% endblock content %}

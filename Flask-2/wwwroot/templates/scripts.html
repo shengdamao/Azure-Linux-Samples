@@ -1,0 +1,418 @@
+{% extends 'layout.html'%}
+{% block title %}
+<h2>腳本</h2>
+{% endblock title%}
+
+{% block content %}
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-1-tab" data-toggle="tab" href="#nav-1" role="tab" aria-controls="nav-1" aria-selected="true">自動回應訊息</a>
+        <a class="nav-item nav-link" id="nav-2-tab" data-toggle="tab" href="#nav-2" role="tab" aria-controls="nav-2" aria-selected="false">標籤使用者</a>
+        <a class="nav-item nav-link" id="nav-3-tab" data-toggle="tab" href="#nav-3" role="tab" aria-controls="nav-2" aria-selected="false">腳本群組</a>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active pt-3" id="nav-1" role="tabpanel" aria-labelledby="nav-1-tab">
+        <div class="text-right">
+            <a href="" class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#addScriptModal">
+                新增自動回應訊息
+            </a>
+        </div>
+        <table class="table table-hover ins-table-1">
+            <thead>
+                <tr>
+                    <th>標題</th>
+                    <th>關鍵字</th>
+                    <th>訊息內容</th>
+                    <th>選擇標籤</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>指定閱讀 chapter 1</td>
+                    <td>我愛看書</td>
+                    <td>回覆給給腳本用！1</td>
+                    <td><span class="badge badge-pill badge-outline-secondary">2019新光登高賽</span></td>
+                    <td><button class="btn btn-sm btn-outline-danger">刪除</button></td>
+                </tr>
+                <tr>
+                    <td>指定閱讀 chapter 1</td>
+                    <td>我愛看書</td>
+                    <td>回覆給給腳本用！1</td>
+                    <td><span class="badge badge-pill badge-outline-secondary">2019新光登高賽</span></td>
+                    <td><button class="btn btn-sm btn-outline-danger">刪除</button></td>
+                </tr>
+                <tr>
+                    <td>指定閱讀 chapter 1</td>
+                    <td>我愛看書</td>
+                    <td>回覆給給腳本用！1</td>
+                    <td><span class="badge badge-pill badge-outline-secondary">2019新光登高賽</span></td>
+                    <td><button class="btn btn-sm btn-outline-danger">刪除</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade pt-3" id="nav-2" role="tabpanel" aria-labelledby="nav-2-tab">
+        <div class="text-right">
+            <a href="" class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#tagModal">
+                新增
+            </a>
+        </div>
+        <table class="table table-hover ins-table-1">
+            <thead>
+                <tr>
+                    <th>標題</th>
+                    <th>類型</th>
+                    <th>觸發條件</th>
+                    <th>發送訊息</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>指定閱讀 chapter 1</td>
+                    <td>用戶訊息輸入</td>
+                    <td>我愛看書</td>
+                    <td>給腳本用！1</td>
+                    <td><button class="btn btn-sm btn-outline-danger">刪除</button></td>
+                </tr>
+                <tr>
+                    <td>指定閱讀 chapter 2</td>
+                    <td>標籤建立</td>
+                    <td>閱讀第一章</td>
+                    <td>測試B</td>
+                    <td><button class="btn btn-sm btn-outline-danger">刪除</button></td>
+                </tr>
+                <tr>
+                    <td>指定閱讀 chapter 2</td>
+                    <td>標籤建立</td>
+                    <td>閱讀第二章</td>
+                    <td>測試 a</td>
+                    <td><button class="btn btn-sm btn-outline-danger">刪除</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade pt-3" id="nav-3" role="tabpanel" aria-labelledby="nav-3-tab">
+        <div class="text-right">
+            <a href="" class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#scriptGroupModal">
+                建立群組
+            </a>
+        </div>
+        <table class="table table-hover ins-table-1">
+            <thead>
+                <tr>
+                    <th>標題</th>
+                    <th class="w-75">群組內容
+                        <span class="badge badge-pill badge-info">自動回應訊息</span>
+                        <span class="badge badge-pill badge-warning">標籤使用者</span>
+                    </th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>指定群組 chapter 1</td>
+                    <td>
+                        <div class="row no-gutters">
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-info d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-info d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-warning d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-warning d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-warning d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-warning d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-warning d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-warning d-block">自動回應訊息1</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><button class="btn btn-sm btn-outline-danger">刪除</button></td>
+                </tr>
+                <tr>
+                    <td>指定群組 2</td>
+                    <td>
+                        <div class="row no-gutters">
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-info d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-info d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-warning d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-warning d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-warning d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-warning d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-warning d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-warning d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-warning d-block">自動回應訊息1</span>
+                            </div>
+                            <div class="col-3 mb-1 pr-1">
+                                <span class="badge badge-pill badge-warning d-block">自動回應訊息1</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><button class="btn btn-sm btn-outline-danger">刪除</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+{# 燈箱組件 #}
+<!-- Modal -->
+<div class="modal fade" id="addScriptModal" tabindex="-1" role="dialog" aria-labelledby="addScriptModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addScriptModalLabel">新增自動回應訊息</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="post">
+                <div class="modal-body">
+                    <div class="tool-list-width">
+
+                        <div class="form-group row">
+                            <label class="col-3 col-form-label" for="">標題<span class="text-danger"> *</span></label>
+                            <div class="col-9"> <input type="text" name="subject" class="form-control"
+                                    placeholder="請輸入" required></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-3 col-form-label" for="">關鍵字<span class="text-danger"> *</span></label>
+                            <div class="col-9">
+                                <input type="text" name="target_url" class="form-control" placeholder="請輸入" required>
+                                <small>使用者輸入此關鍵字就會自動回覆特定訊息</small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-3 col-form-label" for="">訊息內容<span class="text-danger"> *</span></label>
+                            <div class="col-9">
+                                <textarea name="" class="form-control" id="" cols="30" rows="4"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-3 col-form-label" for="">選擇標籤<span class="text-danger"></span></label>
+                            <div class="col-9">
+                                <select name="" id="" class="form-control">
+                                    <option value="">標籤1</option>
+                                    <option value="">標籤2</option>
+                                    <option value="">標籤3</option>
+                                    <option value="">標籤4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="save_bot">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="tagModal" tabindex="-1" role="dialog" aria-labelledby="tagModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tagModalLabel">標籤使用者</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="post">
+                <div class="modal-body">
+                    <div class="tool-list-width">
+
+                        <div class="form-group row">
+                            <label class="col-3 col-form-label" for="">標題<span class="text-danger"> *</span></label>
+                            <div class="col-9"> <input type="text" name="" class="form-control"
+                                    placeholder="請輸入" required></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-3 col-form-label" for="">條件<span class="text-danger"> *</span></label>
+                            <div class="col-9">
+                                <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
+                                <small>設定後，未來符合此條件使用者會被貼上標籤</small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-3 col-form-label" for="">選擇標籤<span class="text-danger"></span></label>
+                            <div class="col-9">
+                                <select name="" id="" class="form-control">
+                                    <option value="">標籤1</option>
+                                    <option value="">標籤2</option>
+                                    <option value="">標籤3</option>
+                                    <option value="">標籤4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="save">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="scriptGroupModal" tabindex="-1" role="dialog" aria-labelledby="scriptGroupModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="scriptGroupModalLabel">建立腳本群組</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="post">
+                <div class="modal-body">
+                    <div class="tool-list-width">
+
+                        <div class="form-group row">
+                            <label class="col-12 col-form-label" for="">群組標題<span class="text-danger"> *</span></label>
+                            <div class="col-12"> <input type="text" name="" class="form-control"
+                                    placeholder="請輸入" required></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-12 col-form-label" for="">選取群組中的自動回應訊息</label>
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="auto_msg1" value="option1">
+                                            <label class="form-check-label" for="auto_msg1">指定閱讀 chapter 1</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="auto_msg2" value="option2">
+                                            <label class="form-check-label" for="auto_msg2">指定閱讀 chapter 2</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="auto_msg3" value="option3">
+                                            <label class="form-check-label" for="auto_msg3">指定閱讀 chapter 3</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="auto_msg4" value="option4">
+                                            <label class="form-check-label" for="auto_msg4">指定閱讀 chapter 4</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="auto_msg5" value="option5">
+                                            <label class="form-check-label" for="auto_msg5">指定閱讀 chapter 5</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-12 col-form-label" for="">選取群組中標籤使用者</label>
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="tags1" value="option1">
+                                            <label class="form-check-label" for="tags1">指定閱讀 chapter 1</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="tags2" value="option2">
+                                            <label class="form-check-label" for="tags2">指定閱讀 chapter 2</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="tags3" value="option3">
+                                            <label class="form-check-label" for="tags3">指定閱讀 chapter 3</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="tags4" value="option4">
+                                            <label class="form-check-label" for="tags4">指定閱讀 chapter 4</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="tags5" value="option5">
+                                            <label class="form-check-label" for="tags5">指定閱讀 chapter 5</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="save">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("body").on("click", "#save_bot", function () {
+            var settings = {
+                "url": "./api_sys/set_msg/",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({ "data1": "hello" }),
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
+        })
+    })
+</script>
+{# 燈箱組建結束#}
+{% endblock content %}
